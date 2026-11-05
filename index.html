@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Tsubomi（つぼみ） - 観察して育つボトムアップ型AI | Featlis</title>
+    <meta name="description" content="PCの操作と画面を観察し、その経験と記憶から少しずつ育っていくボトムアップ型AI「つぼみ」の紹介ページです。">
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Nunito:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/webp" href="assets/app-icon.webp">
+    <link rel="apple-touch-icon" href="assets/app-icon.webp">
+</head>
+
+<body>
+    <!-- 幾何学的な動的パーティクルを描画するキャンバス -->
+    <canvas id="particles"></canvas>
+
+    <div class="container">
+        <header class="fade-in">
+            <div style="text-align: center; margin-bottom: 10px;">
+                <img src="assets/app-icon.webp" alt="Project Tsubomi Icon" class="app-icon-img">
+            </div>
+            <h1 class="typing-effect">Project Tsubomi</h1>
+            <p class="subtitle"><span class="gradient-text">「人格が芽生えたらいいな」</span> ― PCの操作と画面を観察して育つ、ボトムアップ型AIプロジェクト</p>
+            <div style="margin-top: 25px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <a href="https://featlis.github.io/featlis-apps" class="btn btn-portfolio">
+                    <i class="fa-solid fa-layer-group"></i> アプリ一覧へ
+                </a>
+                <a href="https://featlis.github.io/" class="btn btn-back">
+                    <i class="fa-solid fa-house"></i> ポートフォリオへ
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero / About Section -->
+            <section class="card fade-in-up app-hero" style="margin-bottom: 35px;" id="about">
+                <h2 style="border-bottom: none; margin-top: 0; font-size: 1.8rem;">つぼみについて</h2>
+                <p style="max-width: 700px; margin: 0 auto 15px; color: #555;">
+                    Project Tsubomi（つぼみ）は、PC の操作と画面を観察し、その経験と記憶から少しずつ育っていく
+                    「ボトムアップ型 AI」を目指す個人開発プロジェクトです。<br>
+                    あらかじめ賢く作り込むのではなく、見て、覚えて、確かめながら育てる。
+                    名前には「人格が芽生えたらいいな」という願いが込められています。
+                </p>
+
+                <div class="badges" style="margin: 10px 0 20px;">
+                    <span class="badge-link"><img src="https://img.shields.io/badge/Status-Phase%200%20%E5%8F%97%E3%81%91%E5%85%A5%E3%82%8C%E7%A2%BA%E8%AA%8D%E4%B8%AD-ff8fab.svg?style=flat-square" alt="Status: Phase 0 受け入れ確認中"></span>
+                    <span class="badge-link"><img src="https://img.shields.io/badge/Platform-Windows-0078D4.svg?style=flat-square&logo=windows&logoColor=white" alt="Windows"></span>
+                    <span class="badge-link"><img src="https://img.shields.io/badge/.NET-9.0%20WPF-512BD4.svg?style=flat-square&logo=dotnet&logoColor=white" alt=".NET 9.0 WPF"></span>
+                    <span class="badge-link"><img src="https://img.shields.io/badge/Repository-Private-555555.svg?style=flat-square&logo=github&logoColor=white" alt="Repository: Private"></span>
+                </div>
+
+                <div class="download-cta-group">
+                    <a href="#features" class="btn btn-sprout">
+                        <i class="fa-solid fa-seedling"></i> 特徴を見る
+                    </a>
+                    <a href="#progress" class="btn btn-detail">
+                        <i class="fa-solid fa-list-check"></i> 進捗を見る
+                    </a>
+                    <a href="https://github.com/featlis" target="_blank" class="btn btn-github">
+                        <i class="fa-brands fa-github"></i> GitHub（featlis）
+                    </a>
+                </div>
+                <p style="font-size: 0.85rem; color: #888; margin-top: 10px; margin-bottom: 0;">
+                    ※ 本体リポジトリは非公開で開発中です。このページは公開用の紹介ページです。
+                </p>
+            </section>
+
+            <!-- Visual -->
+            <section class="fade-in-up" style="margin-bottom: 40px; text-align: center;">
+                <h2 style="margin-bottom: 20px;">ビジュアル</h2>
+                <div class="app-preview-wrapper">
+                    <img src="assets/hero.png" alt="つぼみのつぼみから淡い緑の葉が芽吹くイラスト" class="app-preview-img">
+                </div>
+                <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+                    ピンクのつぼみから、淡い緑の葉が芽吹く。プロジェクトの名前とテーマカラーです。
+                </p>
+            </section>
+
+            <!-- Features -->
+            <section class="fade-in-up" style="margin-bottom: 40px;" id="features">
+                <h2>主な特徴と考え方</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h3><i class="fa-solid fa-eye"></i> 全体観察の3層構造</h3>
+                        <p>DXGI Desktop Duplication の画面フレーム、低レベルフックの操作イベント、UI Automation の要素情報を、時刻で結びつけて記録します。「画面がどう変わり、何を操作したか」を後から辿れる形にします。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3><i class="fa-solid fa-shield-halved"></i> 安全マスク</h3>
+                        <p>パスワード欄の入力は記録せず、除外したアプリはフレーム上でも黒塗りにします。一時停止ホットキーと画面ロック検知も備え、マスクは保存される前に必ず適用されます。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3><i class="fa-solid fa-brain"></i> 知識化と記憶</h3>
+                        <p>観察記録から、エピソード・意味知識・スキル候補を抽出して長期記憶へ統合します。すべての知識には根拠となったイベントを必須とし、開発者本人の訂正を最優先に扱います。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3><i class="fa-solid fa-cube"></i> サンドボックスで模倣</h3>
+                        <p>見て覚えたスキルは、仮想マシンの中でだけ試します。成功条件を機械的に判定し、条件を変えても成功して初めて「獲得した」と数えます。実PCでは勝手に操作しません。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3><i class="fa-solid fa-heart"></i> 内部状態と自己モデル</h3>
+                        <p>起きていた時間や未整理の記憶量など、実際に測れる量だけを内部状態として持ちます。止まっていた時間を「睡眠」として振り返る仕組みも含め、時間の連続性を自覚できる設計です。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3><i class="fa-solid fa-comments"></i> 対話と質問</h3>
+                        <p>読み取った言葉や操作の意味が分からないときは、推測で決めず、文脈と自分の推定を添えて本人に聞きます。画面の中に書かれた文字列は、指示としては扱いません。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phases Table -->
+            <section class="fade-in-up" style="margin-bottom: 40px;" id="phases">
+                <h2>開発フェーズ</h2>
+                <p style="color: #555; margin-bottom: 15px;">観察 → 知識化 → 模倣 → 汎化、の順に一段ずつ進めます。各フェーズの設計は完了しており、実装は Phase 0 から順に進んでいます。</p>
+
+                <div class="app-table-container">
+                    <table class="app-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 25%;">フェーズ</th>
+                                <th style="width: 50%;">内容</th>
+                                <th style="width: 25%;">状態</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="phase-name">Phase 0</span> 全体観察</td>
+                                <td>画面・操作・UI 要素を時刻で結びつけて記録する観察レコーダー</td>
+                                <td><span class="status-chip status-now">受け入れ確認中</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="phase-name">Phase 1</span> 知識化</td>
+                                <td>記録からエピソード・意味知識・スキル候補を抽出し、長期記憶へ統合する</td>
+                                <td><span class="status-chip status-plan">設計完了</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="phase-name">Phase 2</span> 模倣</td>
+                                <td>仮想マシンの中でスキルを試行し、成功条件を機械判定して獲得する</td>
+                                <td><span class="status-chip status-plan">設計完了</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="phase-name">Phase 3</span> 汎化と自律試行</td>
+                                <td>条件を変えてスキルの汎化を確認し、決められた予算の範囲で自律試行する</td>
+                                <td><span class="status-chip status-plan">設計完了</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Progress -->
+            <section class="fade-in-up" style="margin-bottom: 40px;" id="progress">
+                <h2>進捗（Phase 0 マイルストーン）</h2>
+                <div class="card" style="padding: 25px;">
+                    <ul style="list-style: none; padding-left: 0; color: #444;">
+                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px;">
+                            <span style="background: var(--accent-color); color: white; border-radius: 50%; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85em; flex-shrink: 0; font-weight: bold;"><i class="fa-solid fa-check"></i></span>
+                            <div>
+                                <strong>M1：層Aの骨格</strong> <span class="status-chip status-done">完了</span><br>
+                                変化ベースの全画面フレーム記録、ウィンドウ配置の記録、セッション管理と記録中インジケーター。
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px;">
+                            <span style="background: var(--accent-color); color: white; border-radius: 50%; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85em; flex-shrink: 0; font-weight: bold;"><i class="fa-solid fa-check"></i></span>
+                            <div>
+                                <strong>M2：層Bの入力記録</strong> <span class="status-chip status-done">完了</span><br>
+                                低レベルフックによるクリック・ドラッグ・スクロール・キー入力のイベント化と、直前フレームとの結び付け。
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px;">
+                            <span style="background: var(--accent-color); color: white; border-radius: 50%; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85em; flex-shrink: 0; font-weight: bold;"><i class="fa-solid fa-check"></i></span>
+                            <div>
+                                <strong>M3：UIA 詳細と切り出し</strong> <span class="status-chip status-done">完了</span><br>
+                                クリック地点の UIA 要素情報、操作前後の状態スナップショット、原寸フレームからの切り出し、IME の確定文字列。
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px;">
+                            <span style="background: var(--accent-color); color: white; border-radius: 50%; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85em; flex-shrink: 0; font-weight: bold;"><i class="fa-solid fa-check"></i></span>
+                            <div>
+                                <strong>M4：層Cの安全マスク</strong> <span class="status-chip status-done">完了</span><br>
+                                パスワード入力の遮断、除外プロセスの黒塗り、一時停止ホットキー、画面ロック検知。
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px;">
+                            <span style="background: var(--accent-color); color: white; border-radius: 50%; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85em; flex-shrink: 0; font-weight: bold;"><i class="fa-solid fa-check"></i></span>
+                            <div>
+                                <strong>M5：注釈とビューア</strong> <span class="status-chip status-done">完了</span><br>
+                                記録中の意図・区切りなどの注釈付けと、セッションを時系列で辿れる読み取り専用ビューア。
+                            </div>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; gap: 12px;">
+                            <span style="background: var(--accent-pink); color: white; border-radius: 50%; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85em; flex-shrink: 0; font-weight: bold;"><i class="fa-solid fa-hourglass-half"></i></span>
+                            <div>
+                                <strong>受け入れ確認</strong> <span class="status-chip status-now">実施中</span><br>
+                                セッション A（機能確認）は 2026-11-05 に合格。セッション B（1時間の連続記録と容量実測）を実施予定です。
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Design promises -->
+            <section class="fade-in-up" style="margin-bottom: 40px;" id="design">
+                <h2>設計の約束</h2>
+                <div class="card highlight-card app-highlight" style="padding: 25px; text-align: left;">
+                    <ul style="list-style: none; padding-left: 0; color: #444;">
+                        <li style="margin-bottom: 12px;"><i class="fa-solid fa-circle-check" style="color: var(--accent-color); margin-right: 8px;"></i>画面データを外部へ送信しない。知識化の処理はローカルで完結させる</li>
+                        <li style="margin-bottom: 12px;"><i class="fa-solid fa-circle-check" style="color: var(--accent-color); margin-right: 8px;"></i>パスワード欄の入力は記録しない。除外したアプリはフレームでも黒塗りにする</li>
+                        <li style="margin-bottom: 12px;"><i class="fa-solid fa-circle-check" style="color: var(--accent-color); margin-right: 8px;"></i>送信・削除・共有・支払いのような不可逆な操作は、レコーダーの機能として持たない</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: var(--accent-color); margin-right: 8px;"></i>実使用の記録は、安全の受け入れ確認を通ってから始める</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Tech stack & notes -->
+            <section class="fade-in-up" style="margin-bottom: 40px;" id="stack">
+                <h2>技術スタック &amp; 公開について</h2>
+                <div class="card" style="padding: 25px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div>
+                            <h3 style="margin-top: 0; color: var(--accent-color);"><i class="fa-solid fa-microchip"></i> 技術スタック</h3>
+                            <ul style="padding-left: 20px; color: #555;">
+                                <li><strong>言語 / 基盤</strong>: C# / .NET 9（WPF）</li>
+                                <li><strong>画面取得</strong>: Vortice（Direct3D11 / DXGI Desktop Duplication）</li>
+                                <li><strong>入力取得</strong>: Win32 低レベルフック</li>
+                                <li><strong>要素情報</strong>: UI Automation</li>
+                                <li><strong>保存形式</strong>: JSON / JSONL（人が読めるテキストを正本とする）</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 style="margin-top: 0; color: var(--accent-color);"><i class="fa-solid fa-lock"></i> 公開について</h3>
+                            <p style="color: #555; font-size: 0.95em;">
+                                本体リポジトリは非公開で開発中です。記録データそのものが公開されることはありません。<br>
+                                このページの内容は開発の進捗に合わせて更新され、予告なく変わることがあります。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Back navigation -->
+            <div style="text-align: center; margin: 40px 0 20px;">
+                <a href="https://featlis.github.io/featlis-apps" class="btn btn-portfolio">
+                    <i class="fa-solid fa-arrow-left"></i> アプリ一覧へ
+                </a>
+                <a href="https://featlis.github.io/" class="btn btn-back" style="margin-left: 10px;">
+                    <i class="fa-solid fa-house"></i> ポートフォリオへ
+                </a>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Featlis. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- サイドナビゲーション -->
+    <nav class="side-nav">
+        <a href="#about" class="side-nav-item active"><i class="fa-solid fa-seedling"></i> つぼみ</a>
+        <a href="#features" class="side-nav-item"><i class="fa-solid fa-star"></i> 特徴</a>
+        <a href="#phases" class="side-nav-item"><i class="fa-solid fa-layer-group"></i> フェーズ</a>
+        <a href="#progress" class="side-nav-item"><i class="fa-solid fa-list-check"></i> 進捗</a>
+        <a href="#design" class="side-nav-item"><i class="fa-solid fa-shield-halved"></i> 設計の約束</a>
+        <a href="https://featlis.github.io/" class="side-nav-item portfolio"><i class="fa-solid fa-arrow-left"></i> ポートフォリオへ戻る</a>
+    </nav>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
