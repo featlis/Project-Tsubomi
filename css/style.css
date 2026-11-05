@@ -706,6 +706,21 @@ kbd {
     --accent-pink: #ff8fab;
 }
 
+/* サイドナビ等のページ内リンクを滑らかにスクロールさせる */
+html {
+    scroll-behavior: smooth;
+}
+
+section[id] {
+    scroll-margin-top: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
 .btn-sprout {
     background: linear-gradient(135deg, var(--accent-pink), var(--accent-color));
     color: white;
